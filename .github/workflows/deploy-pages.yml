@@ -17,6 +17,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      CUSTOM_DOMAIN: "true"
+      NEXT_PUBLIC_SITE_URL: "https://demader.com.co"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

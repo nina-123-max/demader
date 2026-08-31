@@ -2,7 +2,8 @@ import { readdir, readFile, writeFile } from "node:fs/promises";
 import { extname, join } from "node:path";
 
 const repository = process.env.GITHUB_REPOSITORY?.split("/")[1] ?? "";
-const basePath = process.env.GITHUB_ACTIONS === "true" && repository && !repository.endsWith(".github.io")
+const hasCustomDomain = process.env.CUSTOM_DOMAIN === "true";
+const basePath = process.env.GITHUB_ACTIONS === "true" && repository && !repository.endsWith(".github.io") && !hasCustomDomain
   ? `/${repository}`
   : "";
 
